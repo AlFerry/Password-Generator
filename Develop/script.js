@@ -17,6 +17,22 @@ function writePassword() {
 
 }
 
+function generatePassword(){
+
+  var charCount = prompt("How long should your password be?");
+  alert(charCount);
+  var hasUpper = confirm("Should the password contain upper-case letters?");
+  alert(hasUpper);
+  var hasLower = confirm("Should the password contain lower-case letters?");
+  alert(hasLower);
+  var hasSpecial = confirm("Should the password contain special characters?");
+  alert(hasSpecial);
+  var hasNum = confirm("Should the password contain numbers?");
+  alert(hasNum);
+  var availableChar = [];
+
+
+}
 
 // Add event listener to generate button, Nothing after this
 generateBtn.addEventListener("click", writePassword);
