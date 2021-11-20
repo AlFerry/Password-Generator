@@ -12,10 +12,10 @@ var num=["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
 
 }
+
 //Function to populate password given user input.
 function generatePassword(){
   //Populates an array with every possible character given user specifications
@@ -47,7 +47,6 @@ function generatePassword(){
     else{
       possible4 = possible3;
     }
-
     return possible4;
   }
   
@@ -55,12 +54,9 @@ function generatePassword(){
   //Returns error if no, calls function to create password if yes.
   function validPassword(charCount, hasUpper, hasLower, hasSpecial, hasNum){
     var password = "";
+    
     if(charCount>128 || charCount<8){
       alert("Your password must be between 8 and 128 characters.");
-      password="Try again!";
-    }
-    else if(charCount==null){
-      alert("You must choose a password length.");
       password="Try again!";
     }
     else if(hasUpper==false && hasLower==false && hasSpecial==false && hasNum==false){
@@ -73,18 +69,16 @@ function generatePassword(){
     return password;
   }
   
-  
-  
   //function to loop char count until password of specified length is achieved.
   function passcode(charCount){    
     var passcode = "";
       
-      for(var i = 0; i < charCount; i++){
-        var index = Math.random()*(availableChar.length);
-          var charIndex = Math.floor(index);
-          passcode += availableChar[charIndex];
-      }  
-      return passcode;
+    for(var i = 0; i < charCount; i++){
+      var index = Math.random()*(availableChar.length);
+      var charIndex = Math.floor(index);
+      passcode += availableChar[charIndex];
+    }  
+    return passcode;
   }
   
   //Create boolean values for character types depending on if they should be used.
@@ -100,7 +94,6 @@ function generatePassword(){
   var passwordText = validPassword(charCount, hasUpper, hasLower, hasSpecial, hasNum);
 
   return passwordText;
-
 }
 
 // Add event listener to generate button
