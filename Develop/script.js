@@ -52,17 +52,39 @@ function generatePassword(){
 
     return possible4;
   }
-
+  
+  function validPassword(charCount, hasUpper, hasLower, hasSpecial, hasNum){
+    var password = "";
+    if(charCount>128 || charCount<8){
+      alert("Your password must be between 8 and 128 characters.");
+      password="Try again!";
+    }
+    else if(charCount==null){
+      alert("You must choose a password length.");
+      password="Try again!";
+    }
+    else if(hasUpper==false && hasLower==false && hasSpecial==false && hasNum==false){
+      alert("You must choose at least one variable type for your password to contain.");
+      password="Try again!";
+    }
+    else{
+      password=passcode(charCount);
+    }
+    return password;
+  }
+  
+  
+  
   //function to loop char count, pass in charCount and big array
   function passcode(charCount){    
-    var password = "";
+    var passcode = "";
       
       for(var i = 0; i < charCount; i++){
         var index = Math.random()*(availableChar.length);
           var charIndex = Math.floor(index);
-          password += availableChar[charIndex];
+          passcode += availableChar[charIndex];
       }  
-      return password;
+      return passcode;
     }
   
   
@@ -73,7 +95,7 @@ function generatePassword(){
   var charCount = prompt("How long should your password be?");
 
   var availableChar = populatePassword(hasUpper, hasLower, hasSpecial, hasNum);
-  var passwordText = passcode(charCount);
+  var passwordText = validPassword(charCount, hasUpper, hasLower, hasSpecial, hasNum);
 
   return passwordText;
 
