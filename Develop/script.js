@@ -16,17 +16,15 @@ function writePassword() {
   passwordText.value = password;
 
 }
-
+//Function to populate password given user input.
 function generatePassword(){
+  //Populates an array with every possible character given user specifications
   function populatePassword(hasUpper, hasLower, hasSpecial, hasNum){
-    //populate array; return big array
-
     var emptyChar = [];
     var possible1 = [];
     var possible2 = [];
     var possible3 = [];
     var possible4 = [];
-
 
     if(hasUpper){
       possible1 = emptyChar.concat(upper);
@@ -53,6 +51,8 @@ function generatePassword(){
     return possible4;
   }
   
+  //Function evaluates if user's input meets password requirements,
+  //Returns error if no, calls function to create password if yes.
   function validPassword(charCount, hasUpper, hasLower, hasSpecial, hasNum){
     var password = "";
     if(charCount>128 || charCount<8){
@@ -75,7 +75,7 @@ function generatePassword(){
   
   
   
-  //function to loop char count, pass in charCount and big array
+  //function to loop char count until password of specified length is achieved.
   function passcode(charCount){    
     var passcode = "";
       
@@ -85,13 +85,15 @@ function generatePassword(){
           passcode += availableChar[charIndex];
       }  
       return passcode;
-    }
+  }
   
-  
+  //Create boolean values for character types depending on if they should be used.
   var hasUpper = confirm("Should the password contain upper-case letters?");
   var hasLower = confirm("Should the password contain lower-case letters?");
   var hasSpecial = confirm("Should the password contain special characters?");
   var hasNum = confirm("Should the password contain numbers?");
+
+  //Creates number for length of password.
   var charCount = prompt("How long should your password be?");
 
   var availableChar = populatePassword(hasUpper, hasLower, hasSpecial, hasNum);
@@ -101,5 +103,5 @@ function generatePassword(){
 
 }
 
-// Add event listener to generate button, Nothing after this
+// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
